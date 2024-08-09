@@ -57,7 +57,10 @@ return {
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = { buffer_close_picker, desc = "Pick to close" },
+        -- stylua: ignore
         ["<Leader>b"] = { name = "Buffers" },
+        ["<C-g>t"] = { ":GpChatToggle popup<cr>", desc = "Toggle Chat (Normal)" },
+        ["<c-c>"] = { ":%y+<cr><cr>", desc = "Copy file content", silent = true }, -- copies the file contents and then returns back to the position it was in
       },
       v = {
         -- search in visual mode

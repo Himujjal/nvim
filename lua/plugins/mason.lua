@@ -9,6 +9,9 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
+        "gopls",
+        "rust_analyzer",
+        "tsserver",
         -- add more arguments for adding more language servers
       },
     },
@@ -20,6 +23,7 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
+        "eslint-lsp",
         -- add more arguments for adding more null-ls sources
       },
     },

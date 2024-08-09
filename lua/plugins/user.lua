@@ -86,9 +86,37 @@ return {
     opts = {
       window = {
         mappings = {
-          ["o"] = "open",
+          ["o"] = { "open", nowait = true },
+          ["@c"] = "order_by_created",
+          ["@d"] = "order_by_diagnostics",
+          ["@g"] = "order_by_git_status",
+          ["@m"] = "order_by_modified",
+          ["@n"] = "order_by_name",
+          ["@s"] = "order_by_size",
+          ["@t"] = "order_by_type",
         },
       },
     },
+  },
+  {
+    "supermaven-inc/supermaven-nvim",
+    event = "BufRead",
+    config = function()
+      require("supermaven-nvim").setup {
+        keymaps = {
+          accept_suggestion = "<C-l>",
+          accept_word = "<C-k>",
+          clear_suggestion = "<C-c>",
+        },
+        ignore_filetypes = { cpp = true },
+        color = {
+          suggestion_color = "#ffffff",
+          cterm = 244,
+        },
+        disable_inline_completion = false, -- disables inline completion for use with cmp
+        disable_keymaps = false, -- disables built in keymaps for more manual control
+        log_level = "off",
+      }
+    end,
   },
 }
