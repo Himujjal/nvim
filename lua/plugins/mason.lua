@@ -11,7 +11,7 @@ return {
         "lua_ls",
         "gopls",
         "rust_analyzer",
-        "tsserver",
+        "vtsls",
         -- add more arguments for adding more language servers
       },
     },

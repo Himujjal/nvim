@@ -53,12 +53,20 @@ return {
         ["}"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["{"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
         ["zz"] = { "<cmd>:w!<cr>", desc = "Save files" },
-        ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
 
         -- mappings seen under group name "Buffer"
-        ["<Leader>bD"] = { buffer_close_picker, desc = "Pick to close" },
+        
         -- stylua: ignore
+        ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+        ["<Leader>bD"] = { buffer_close_picker, desc = "Pick to close" },
         ["<Leader>b"] = { name = "Buffers" },
+
+        -- stylua: ignore
+        ["<Leader>nf"] = { function() require('astronvim.utils').new_file() end, desc = "New file" },
+
+        ["<Leader>Nx" ] = { "<cmd>Telescope nx actions<CR>", desc = "nx actions" },
+        ["<Leader>N"] = { name = "N based commands" },
+
         ["<C-g>t"] = { ":GpChatToggle popup<cr>", desc = "Toggle Chat (Normal)" },
         ["<c-c>"] = { ":%y+<cr><cr>", desc = "Copy file content", silent = true }, -- copies the file contents and then returns back to the position it was in
       },

@@ -66,11 +66,11 @@ local config = {
     },
   },
 
-  default_chat_agent = "GroqLLAMA_8B",
+  default_chat_agent = "ChatGPT4o",
 }
 
 return {
   "robitx/gp.nvim",
-  event = "VeryLazy",
+  event = "BufEnter",
   config = function() require("gp").setup(config) end,
 }
