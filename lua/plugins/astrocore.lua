@@ -69,6 +69,7 @@ return {
 
         ["<C-g>t"] = { ":GpChatToggle popup<cr>", desc = "Toggle Chat (Normal)" },
         ["<c-c>"] = { ":%y+<cr><cr>", desc = "Copy file content", silent = true }, -- copies the file contents and then returns back to the position it was in
+        ["<leader>mp"] = { "<cmd>PeekOpen<cr>", desc = "Open markdown preview" },
       },
       v = {
         -- search in visual mode

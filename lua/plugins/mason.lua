@@ -12,6 +12,7 @@ return {
         "gopls",
         "rust_analyzer",
         "vtsls",
+        "zls"
         -- add more arguments for adding more language servers
       },
     },

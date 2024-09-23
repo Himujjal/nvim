@@ -66,7 +66,7 @@ local config = {
     },
   },
 
-  default_chat_agent = "ChatGPT4o",
+  default_chat_agent = "GroqLLAMA_8B",
 }
 
 return {

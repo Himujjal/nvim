@@ -10,7 +10,7 @@ return {
   opts = {
     -- Configuration table of features provided by AstroLSP
     features = {
-      codelens = true, -- enable/disable codelens refresh on start
+      codelens = false, -- enable/disable codelens refresh on start
       inlay_hints = false, -- enable/disable inlay hints on start
       semantic_tokens = false, -- enable/disable semantic token highlighting
     },
@@ -20,7 +20,8 @@ return {
       format_on_save = {
         enabled = false, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
-          -- "go",
+          "go",
+          "zig"
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
