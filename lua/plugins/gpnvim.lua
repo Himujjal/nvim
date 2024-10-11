@@ -69,6 +69,7 @@ local config = {
   default_chat_agent = "GroqLLAMA_8B",
 }
 
+--
 return {
   "robitx/gp.nvim",
   event = "BufEnter",

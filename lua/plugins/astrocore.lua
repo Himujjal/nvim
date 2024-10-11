@@ -19,7 +19,8 @@ return {
       cmp = true, -- enable completion at start
       diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
       highlighturl = true, -- highlight URLs at start
-      notifications = true, -- enable notifications at start
+
+      -- notifications = true, -- enable notifications at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
@@ -55,7 +56,7 @@ return {
         ["zz"] = { "<cmd>:w!<cr>", desc = "Save files" },
 
         -- mappings seen under group name "Buffer"
-        
+
         -- stylua: ignore
         ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
         ["<Leader>bD"] = { buffer_close_picker, desc = "Pick to close" },
@@ -64,10 +65,12 @@ return {
         -- stylua: ignore
         ["<Leader>nf"] = { function() require('astronvim.utils').new_file() end, desc = "New file" },
 
-        ["<Leader>Nx" ] = { "<cmd>Telescope nx actions<CR>", desc = "nx actions" },
+        ["<Leader>Nx"] = { "<cmd>Telescope nx actions<CR>", desc = "nx actions" },
         ["<Leader>N"] = { name = "N based commands" },
 
+        ["<C-g>"] = { name = "Gp.nvim commands. " },
         ["<C-g>t"] = { ":GpChatToggle popup<cr>", desc = "Toggle Chat (Normal)" },
+        ["<C-g>p"] = { ":GpWhisper<cr>", desc = "Whisper" },
         ["<c-c>"] = { ":%y+<cr><cr>", desc = "Copy file content", silent = true }, -- copies the file contents and then returns back to the position it was in
         ["<leader>mp"] = { "<cmd>PeekOpen<cr>", desc = "Open markdown preview" },
       },

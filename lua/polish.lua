@@ -14,3 +14,5 @@ vim.filetype.add {
     ["~/%.config/foo/.*"] = "fooscript",
   },
 }
+
+vim.g.zig_fmt_autosave = 0;

@@ -5,4 +5,8 @@ return {
     "ray-x/lsp_signature.nvim",
     enabled = false,
   },
+  {
+    "rcarriga/nvim-notify",
+    enabled = false,
+  }
 }
