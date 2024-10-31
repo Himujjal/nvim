@@ -12,7 +12,7 @@ return {
         "gopls",
         "rust_analyzer",
         "vtsls",
-        "zls"
+        "zls",
         -- add more arguments for adding more language servers
       },
     },
@@ -25,6 +25,7 @@ return {
       ensure_installed = {
         "stylua",
         "eslint-lsp",
+        "prettierd",
         -- add more arguments for adding more null-ls sources
       },
     },

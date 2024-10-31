@@ -52,7 +52,7 @@ Whisper and Supermaven are going to be wonders for Neovim to come in the future.
 
 gpnvim is such a cool plugin
 
-So gp.nvim is a great tool and that is what's going to augment our workflow and make sure that we are fast in track with AI.
-with the power of nvim and gp.nvim, we can unlock the full potential of AI-assisted development.
+So `gp.nvim` is a great tool and that is what's going to augment our workflow and make sure that we are fast in track with AI.
+with the power of `nvim` and `gp.nvim`, we can unlock the full potential of AI-assisted development.
 
 

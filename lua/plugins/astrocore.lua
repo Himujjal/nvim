@@ -69,9 +69,14 @@ return {
         ["<Leader>N"] = { name = "N based commands" },
 
         ["<C-g>"] = { name = "Gp.nvim commands. " },
+
         ["<C-g><C-g>"] = { ":GpChatToggle vsplit<cr>", desc = "Toggle Chat (Normal)" },
-        ["<C-g>w"] = { ":GpWhisper<cr>", desc = "Whisper" },
-        ["<C-g>r"] = { ":GpRewrite<cr>", desc = "Inline Assist" },
+
+        ["<C-g>r"] = { ":GpRewrite<cr>", desc = "Inline Assist (Rewrite)" },
+        ["<C-g>R"] = { ":GpWhisperRewrite<cr>", desc = "Whisper Inline Assist" },
+        ["<C-g>w"] = { ":GpWhisper<cr>", desc = "Whisper Inline Assist" },
+        ["<C-g>a"] = { ":GpAppend<cr>", desc = "Append" },
+        ["<C-g>A"] = { ":GpWhisperAppend<cr>", desc = "Whisper Append" },
 
         ["<c-c>"] = { ":%y+<cr><cr>", desc = "Copy file content", silent = true }, -- copies the file contents and then returns back to the position it was in
         ["<leader>mp"] = { "<cmd>PeekOpen<cr>", desc = "Open markdown preview" },

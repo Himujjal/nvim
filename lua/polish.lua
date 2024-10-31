@@ -15,4 +15,8 @@ vim.filetype.add {
   },
 }
 
-vim.g.zig_fmt_autosave = 0;
+vim.g.zig_fmt_autosave = 0
+
+if vim.g.neovide then
+  vim.o.guifont = "FiraCode Nerd Font:h13"
+end

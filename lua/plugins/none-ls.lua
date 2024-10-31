@@ -18,6 +18,7 @@ return {
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.prettier.with {
         condition = function(utils)
+          local is_biome = utils.root_has_file "biome.json"
           return utils.root_has_file {
             ".prettierrc",
             ".prettierrc.js",
@@ -25,7 +26,7 @@ return {
             ".prettierrc.toml",
             ".prettierrc.yaml",
             ".prettierrc.yml",
-          }
+          } or not is_biome
         end,
       },
       null_ls.builtins.formatting.biome.with {
