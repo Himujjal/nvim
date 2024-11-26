@@ -1,12 +1,18 @@
 local env = require "env"
 
 local OPENAI_KEY = env.OPENAI_KEY
-local GROQ_KEY = env.GROQ_KEY
 local OPENAI_HOST = "https://api.openai.com/v1/chat/completions"
-local GROQ_HOST = "https://api.groq.com/openai/v1/chat/completions"
-local GROQ_AUDIO = "https://api.groq.com/openai/v1/audio/transcriptions"
 
+local GROQ_KEY = env.GROQ_KEY
+local GROQ_HOST = "https://api.groq.com/openai/v1/chat/completions"
+-- local GROQ_MODEL = "llama-3.2-11b-text-preview"
+local GROQ_MODEL = "gemma2-9b-it"
+local GROQ_AUDIO = "https://api.groq.com/openai/v1/audio/transcriptions"
 local GROQ_WHISPER_MODEL = "distil-whisper-large-v3-en";
+
+local SAMBANOVA_KEY = env.SAMBANOVA_KEY
+local SAMBANOVA_HOST = "https://api.sambanova.ai/v1/chat/completions"
+local SMABANOVAL_MODEL = "Meta-Llama-3.2-3B-Instruct"
 
 -- Gp (GPT prompt) lua plugin for Neovim
 -- https://github.com/Robitx/gp.nvim/
@@ -26,9 +32,13 @@ local config = {
       endpoint = GROQ_HOST,
       secret = GROQ_KEY,
     },
+    sambanova = {
+      endpoint = SAMBANOVA_HOST,
+      secret = SAMBANOVA_KEY,
+    },
   },
 
-  chat_shortcut_respond = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g><cr>" },
+  chat_shortcut_respond = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>g" },
   chat_confirm_delete = false,
 
   -- prefix for all commands
@@ -83,10 +93,20 @@ local config = {
       chat = true,
       command = true,
       -- string with model name or table with model name and parameters
-      model = { model = "llama-3.2-11b-text-preview", temperature = 0.5, top_p = 1 },
+      model = { model = GROQ_MODEL, temperature = 0.5, top_p = 1 },
       system_prompt = "Given a task or problem, please provide a concise and well-formatted solution or answer.\n\n"
         .. "Please keep your response within a code snippet, and avoid unnecessary commentary.\n",
     },
+    {
+      provider = "sambanova",
+      name = "Sambanova_90B",
+      chat = true,
+      command = true,
+      -- string with model name or table with model name and parameters
+      model = { model = SMABANOVAL_MODEL, temperature = 0.5, top_p = 1 },
+      system_prompt = "Given a task or problem, please provide a concise and well-formatted solution or answer.\n\n"
+        .. "Please keep your response within a code snippet, and avoid unnecessary commentary.\n",
+    }
   },
 }
 

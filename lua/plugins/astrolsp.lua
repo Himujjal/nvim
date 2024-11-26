@@ -21,7 +21,7 @@ return {
         enabled = false, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           "go",
-          "zig"
+          "zig",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
@@ -49,6 +49,20 @@ return {
           -- this is important, otherwise tsserver will format ts/js files which we *really* don't want.
           client.server_capabilities.documentFormattingProvider = false
         end,
+      },
+      tailwindcss = {
+        filetypes = {
+          "html",
+          "css",
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact",
+          "astro",
+          "vue",
+          "svelte",
+        },
+        root_dir = require("lspconfig").util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.config.mjs", "tailwind.config.ts", "tailwind.config.json"),
       },
     },
     -- customize how language servers are attached

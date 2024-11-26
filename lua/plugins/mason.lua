@@ -13,6 +13,7 @@ return {
         "rust_analyzer",
         "vtsls",
         "zls",
+        "tailwindcss"
         -- add more arguments for adding more language servers
       },
     },

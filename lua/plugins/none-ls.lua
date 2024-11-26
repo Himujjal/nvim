@@ -16,7 +16,7 @@ return {
     opts.sources = require("astrocore").list_insert_unique(opts.sources, {
       -- Set a formatter
       null_ls.builtins.formatting.stylua,
-      null_ls.builtins.formatting.prettier.with {
+      null_ls.builtins.formatting.prettierd.with {
         condition = function(utils)
           local is_biome = utils.root_has_file "biome.json"
           return utils.root_has_file {
