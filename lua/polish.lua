@@ -5,18 +5,16 @@
 -- Set up custom filetypes
 vim.filetype.add {
   extension = {
-    foo = "fooscript",
+    env = "sh",
   },
   filename = {
-    ["Foofile"] = "fooscript",
+    [".env"] = "sh",
   },
   pattern = {
-    ["~/%.config/foo/.*"] = "fooscript",
+    ["%.env%.[%w_.-]+"] = "sh",
   },
 }
 
 vim.g.zig_fmt_autosave = 0
 
-if vim.g.neovide then
-  vim.o.guifont = "FiraCode Nerd Font:h13"
-end
+if vim.g.neovide then vim.o.guifont = "FiraCode Nerd Font:h13" end
