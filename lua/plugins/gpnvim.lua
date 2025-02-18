@@ -5,10 +5,11 @@ local OPENAI_HOST = "https://api.openai.com/v1/chat/completions"
 
 local GROQ_KEY = env.GROQ_KEY
 local GROQ_HOST = "https://api.groq.com/openai/v1/chat/completions"
+
 -- local GROQ_MODEL = "llama-3.2-11b-text-preview"
-local GROQ_MODEL = "gemma2-9b-it"
+local GROQ_MODEL = "deepseek-r1-distill-llama-70b"
 local GROQ_AUDIO = "https://api.groq.com/openai/v1/audio/transcriptions"
-local GROQ_WHISPER_MODEL = "distil-whisper-large-v3-en";
+local GROQ_WHISPER_MODEL = "distil-whisper-large-v3-en"
 
 local SAMBANOVA_KEY = env.SAMBANOVA_KEY
 local SAMBANOVA_HOST = "https://api.sambanova.ai/v1/chat/completions"
@@ -44,15 +45,25 @@ local config = {
   -- prefix for all commands
   cmd_prefix = "Gp",
 
-  default_chat_agent = "GroqLLAMA_8B",
+  default_chat_agent = "DeepSeek-R1-OSS",
   whisper = {
     endpoint = GROQ_AUDIO,
     secret = GROQ_KEY,
     model = GROQ_WHISPER_MODEL,
-    store_dir = "/tmp/gp_whisper"
+    store_dir = "/tmp/gp_whisper",
   },
 
   agents = {
+    {
+      provider = "groq",
+      name = "DeepSeek-R1-OSS",
+      chat = true,
+      command = true,
+      -- string with model name or table with model name and parameters
+      model = { model = GROQ_MODEL, temperature = 0.2, top_p = 1 },
+      system_prompt = "Given a task or problem, please provide a concise and well-formatted solution or answer.\n\n"
+        .. "Please keep your response within a code snippet, and avoid unnecessary commentary.\n",
+    },
     {
       provider = "openai",
       name = "ChatGPT4o",
@@ -88,16 +99,6 @@ local config = {
     --     .. "Please AVOID COMMENTARY OUTSIDE OF THE SNIPPET RESPONSE.\n",
     -- },
     {
-      provider = "groq",
-      name = "GroqLLAMA_8B",
-      chat = true,
-      command = true,
-      -- string with model name or table with model name and parameters
-      model = { model = GROQ_MODEL, temperature = 0.5, top_p = 1 },
-      system_prompt = "Given a task or problem, please provide a concise and well-formatted solution or answer.\n\n"
-        .. "Please keep your response within a code snippet, and avoid unnecessary commentary.\n",
-    },
-    {
       provider = "sambanova",
       name = "Sambanova_90B",
       chat = true,
@@ -106,7 +107,7 @@ local config = {
       model = { model = SMABANOVAL_MODEL, temperature = 0.5, top_p = 1 },
       system_prompt = "Given a task or problem, please provide a concise and well-formatted solution or answer.\n\n"
         .. "Please keep your response within a code snippet, and avoid unnecessary commentary.\n",
-    }
+    },
   },
 }
 

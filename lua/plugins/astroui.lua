@@ -9,7 +9,16 @@ return {
   ---@type AstroUIOpts
   opts = {
     -- change colorscheme
-    colorscheme = "catppuccin-mocha",
+    -- colorscheme = "nordic",
+    -- colorscheme = "iceberg",
+    -- colorscheme = "catppuccin-mocha",
+    -- colorscheme = "catppuccin-frappe",
+    -- colorscheme = "catppuccin-latte",
+    -- colorscheme = "catppuccin-macchiato",
+    -- colorscheme = "gruvbox",
+    -- colorscheme = "tokyodark",
+    colorscheme = "tokyonight-storm",
+    -- colorscheme = "onedark",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
       init = { -- this table overrides highlights in all themes
@@ -37,7 +46,13 @@ return {
       colors = {
         buffer_visible_bg = "#171824",
         buffer_visible_fg = "#4d5165",
-      }
-    }
+      },
+    },
+    italic = {
+      strings = true,
+      comments = true,
+      folds = true,
+      operations = false,
+    },
   },
 }
