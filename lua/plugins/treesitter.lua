@@ -13,6 +13,7 @@ return {
       "rust",
       "json",
       "zig",
+      "elixir",
       -- add more arguments for adding more treesitter parsers
     },
   },

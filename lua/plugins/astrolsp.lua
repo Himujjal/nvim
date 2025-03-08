@@ -39,6 +39,7 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
+      "gleam",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -50,20 +51,6 @@ return {
           client.server_capabilities.documentFormattingProvider = false
         end,
       },
-      tailwindcss = {
-        filetypes = {
-          "html",
-          "css",
-          "javascript",
-          "typescript",
-          "javascriptreact",
-          "typescriptreact",
-          "astro",
-          "vue",
-          "svelte",
-        },
-        root_dir = require("lspconfig").util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.config.mjs", "tailwind.config.ts", "tailwind.config.json"),
-      },
     },
     -- customize how language servers are attached
     handlers = {
@@ -73,6 +60,7 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+      gleam = function(_, opts) require("lspconfig").gleam.setup(opts) end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
