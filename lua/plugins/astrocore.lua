@@ -69,14 +69,17 @@ return {
         ["<Leader>N"] = { name = "N based commands" },
 
         ["<C-g>"] = { name = "Gp.nvim commands. " },
-
         ["<C-g><C-g>"] = { ":GpChatToggle vsplit<cr>", desc = "Toggle Chat (Normal)" },
-
         ["<C-g>r"] = { ":GpRewrite<cr>", desc = "Inline Assist (Rewrite)" },
         ["<C-g>R"] = { ":GpWhisperRewrite<cr>", desc = "Whisper Inline Assist" },
         ["<C-g>w"] = { ":GpWhisper<cr>", desc = "Whisper Inline Assist" },
         ["<C-g>a"] = { ":GpAppend<cr>", desc = "Append" },
         ["<C-g>A"] = { ":GpWhisperAppend<cr>", desc = "Whisper Append" },
+
+        ["<leader>a"] = { name = "Augment commands" },
+        ["<leader>ac"] = { "<cmd>Augment chat<cr>", desc = "Chat with Augment" },
+        ["<leader>an"] = { "<cmd>Augment chat-new<cr>", desc = "New Augment chat" },
+        ["<leader>at"] = { "<cmd>Augment chat-toggle<cr>", desc = "Toggle Augment chat" },
 
         ["<c-c>"] = { ":%y+<cr><cr>", desc = "Copy file content", silent = true }, -- copies the file contents and then returns back to the position it was in
         ["<leader>mp"] = { "<cmd>PeekOpen<cr>", desc = "Open markdown preview" },
@@ -96,9 +99,12 @@ return {
         ["<C-g>w"] = { ":GpWhisper<cr>", desc = "Whisper Inline Assist" },
         ["<C-g>a"] = { ":GpAppend<cr>", desc = "Append" },
         ["<C-g>A"] = { ":GpWhisperAppend<cr>", desc = "Whisper Append" },
+
+        ["<leader>ac"] = { "<cmd>Augment chat<cr>", desc = "Augment chat" },
       },
       i = {
         ["<C-g>w"] = { function() vim.cmd "GpWhisper<cr>" end, desc = "Whisper" },
+        ["<C-l>"] = { "<cmd>call augment#Accept()<cr>", desc = "Accept suggestion" },
       },
     },
   },
