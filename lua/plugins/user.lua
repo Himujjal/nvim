@@ -1,3 +1,4 @@
+local env = require "env"
 -- You can also add or configure plugins by creating files in this `plugins/` folder
 -- Here are some examples:
 
@@ -133,8 +134,8 @@ return {
   {
     "augmentcode/augment.vim",
     config = function()
-      vim.g.augment_workspace_folders = {
-        "~/projects/forium/forium",
+      vim.g.augment_workspace_folders = env.AUGMENT_FOLDERS or {
+        "~/projects/wokay/wokay",
       }
     end,
   },
