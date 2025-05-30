@@ -134,9 +134,60 @@ return {
   {
     "augmentcode/augment.vim",
     config = function()
-      vim.g.augment_workspace_folders = env.AUGMENT_FOLDERS or {
-        "~/projects/wokay/wokay",
-      }
+      vim.g.augment_workspace_folders = env.AUGMENT_FOLDERS
+        or {
+          "~/projects/littlebird/Little-Bird-Client",
+          "~/projects/littlebird/Little-Bird-Backend",
+        }
     end,
   },
+  {
+    "greggh/claude-code.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      window = {
+        position = "vertical",
+      },
+      keymaps = {
+        toggle = {
+          normal = "<C-,>",
+          terminal = "<C-,>",
+          window_navigation = true,
+          scrolling = true,
+        },
+      },
+    },
+  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   event = "InsertEnter",
+  --   opts = {
+  --     suggestion = {
+  --       enabled = true,
+  --       auto_trigger = true,
+  --       keymap = {
+  --         accept = "<C-l>",
+  --         next = "<C-j>",
+  --         prev = "<C-k>",
+  --         dismiss = "<C-c>",
+  --       },
+  --     },
+  --     panel = {
+  --       enabled = true,
+  --       auto_refresh = true,
+  --       keymap = {
+  --         jump_prev = "<C-k>",
+  --         jump_next = "<C-j>",
+  --         accept = "<C-l>",
+  --         refresh = "gr",
+  --         open = "<C-\\>",
+  --       },
+  --     },
+  --     filetypes = {
+  --       markdown = true,
+  --       gitcommit = true,
+  --       [".env"] = true,
+  --     },
+  --   },
+  -- },
 }

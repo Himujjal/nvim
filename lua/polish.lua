@@ -6,6 +6,7 @@
 vim.filetype.add {
   extension = {
     env = "sh",
+    ignore = "gitignore",
   },
   filename = {
     [".env"] = "sh",

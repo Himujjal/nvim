@@ -54,3 +54,10 @@ gpnvim is such a cool plugin
 
 So `gp.nvim` is a great tool and that is what's going to augment our workflow and make sure that we are fast in track with AI.
 with the power of `nvim` and `gp.nvim`, we can unlock the full potential of AI-assisted development.
+
+- For detailed code reviews, I use Augment. It has by far the best code review capabilities.
+- I use `gp.nvim` for fast queries with cerebras Llama Scout Cerebras
+- For completions I use `github copilot`
+- For refactoring and other use cases, I use Claude code
+
+

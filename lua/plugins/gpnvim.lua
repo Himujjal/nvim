@@ -6,14 +6,19 @@ local OPENAI_HOST = "https://api.openai.com/v1/chat/completions"
 local GROQ_KEY = env.GROQ_KEY
 local GROQ_HOST = "https://api.groq.com/openai/v1/chat/completions"
 
--- local GROQ_MODEL = "llama-3.2-11b-text-preview"
-local GROQ_MODEL = "deepseek-r1-distill-llama-70b"
+local GROQ_MODEL = "llama-3.2-11b-text-preview"
+-- local GROQ_MODEL = "deepseek-r1-distill-llama-70b"
 local GROQ_AUDIO = "https://api.groq.com/openai/v1/audio/transcriptions"
 local GROQ_WHISPER_MODEL = "distil-whisper-large-v3-en"
 
 local SAMBANOVA_KEY = env.SAMBANOVA_KEY
 local SAMBANOVA_HOST = "https://api.sambanova.ai/v1/chat/completions"
 local SMABANOVAL_MODEL = "Meta-Llama-3.2-3B-Instruct"
+
+local CEREBRAS_KEY = env.CEREBRAS_KEY
+local CEREBRAS_HOST = "https://api.cerebras.ai/v1/chat/completions"
+-- local CEREBRAS_MODEL = "qwen-3-32b"
+local CEREBRAS_MODEL = "llama-4-scout-17b-16e-instruct"
 
 -- Gp (GPT prompt) lua plugin for Neovim
 -- https://github.com/Robitx/gp.nvim/
@@ -24,6 +29,8 @@ local SMABANOVAL_MODEL = "Meta-Llama-3.2-3B-Instruct"
 ---@class GpConfig
 -- README_REFERENCE_MARKER_START
 local config = {
+  default_chat_agent = CEREBRAS_MODEL,
+
   providers = {
     openai = {
       endpoint = OPENAI_HOST,
@@ -37,15 +44,18 @@ local config = {
       endpoint = SAMBANOVA_HOST,
       secret = SAMBANOVA_KEY,
     },
+    cerebras = {
+      endpoint = CEREBRAS_HOST,
+      secret = CEREBRAS_KEY,
+    },
   },
 
-  chat_shortcut_respond = { modes = { "n", "i", "v", "x" }, shortcut = "<C-g>g" },
+  chat_shortcut_respond = { modes = { "n", "v", "x" }, shortcut = "<CR>" },
   chat_confirm_delete = false,
 
   -- prefix for all commands
   cmd_prefix = "Gp",
 
-  default_chat_agent = "DeepSeek-R1-OSS",
   whisper = {
     endpoint = GROQ_AUDIO,
     secret = GROQ_KEY,
@@ -54,6 +64,15 @@ local config = {
   },
 
   agents = {
+    {
+      provider = "cerebras",
+      name = "Cerebras",
+      chat = true,
+      command = true,
+      -- string with model name or table with model name and parameters
+      model = { model = CEREBRAS_MODEL, temperature = 0.2, top_p = 1 },
+      system_prompt = "Given a task or problem, please provide a concise and well-formatted solution or answer.\n\n",
+    },
     {
       provider = "groq",
       name = "DeepSeek-R1-OSS",
