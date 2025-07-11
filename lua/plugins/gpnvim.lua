@@ -17,8 +17,8 @@ local SMABANOVAL_MODEL = "Meta-Llama-3.2-3B-Instruct"
 
 local CEREBRAS_KEY = env.CEREBRAS_KEY
 local CEREBRAS_HOST = "https://api.cerebras.ai/v1/chat/completions"
--- local CEREBRAS_MODEL = "qwen-3-32b"
-local CEREBRAS_MODEL = "llama-4-scout-17b-16e-instruct"
+local CEREBRAS_MODEL = "qwen-3-32b"
+-- local CEREBRAS_MODEL = "llama-3.3-70b"
 
 -- Gp (GPT prompt) lua plugin for Neovim
 -- https://github.com/Robitx/gp.nvim/
@@ -29,7 +29,8 @@ local CEREBRAS_MODEL = "llama-4-scout-17b-16e-instruct"
 ---@class GpConfig
 -- README_REFERENCE_MARKER_START
 local config = {
-  default_chat_agent = CEREBRAS_MODEL,
+  default_chat_agent = "cerebras",
+  default_command_agent = "cerebras",
 
   providers = {
     openai = {

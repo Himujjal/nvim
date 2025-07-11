@@ -28,6 +28,7 @@ return {
         "stylua",
         "eslint-lsp",
         "prettierd",
+        "swift-format",
         -- add more arguments for adding more null-ls sources
       },
     },

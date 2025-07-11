@@ -55,6 +55,8 @@ return {
         ["{"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
         ["zz"] = { "<cmd>:w!<cr>", desc = "Save files" },
 
+        ["<C-,>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle NvimTree" },
+
         -- mappings seen under group name "Buffer"
 
         -- stylua: ignore

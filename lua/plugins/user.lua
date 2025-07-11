@@ -89,38 +89,25 @@ return {
       window = {
         mappings = {
           ["o"] = { "open", nowait = true },
-          ["@c"] = "order_by_created",
-          ["@d"] = "order_by_diagnostics",
-          ["@g"] = "order_by_git_status",
-          ["@m"] = "order_by_modified",
-          ["@n"] = "order_by_name",
-          ["@s"] = "order_by_size",
-          ["@t"] = "order_by_type",
         },
       },
     },
   },
-  -- {
-  --   "supermaven-inc/supermaven-nvim",
-  --   event = "BufRead",
-  --   config = function()
-  --     require("supermaven-nvim").setup {
-  --       keymaps = {
-  --         accept_suggestion = "<C-l>",
-  --         accept_word = "<C-k>",
-  --         clear_suggestion = "<C-c>",
-  --       },
-  --       ignore_filetypes = { cpp = true },
-  --       color = {
-  --         suggestion_color = "#ffffff",
-  --         cterm = 244,
-  --       },
-  --       disable_inline_completion = false, -- disables inline completion for use with cmp
-  --       disable_keymaps = false, -- disables built in keymaps for more manual control
-  --       log_level = "off",
-  --     }
-  --   end,
-  -- },
+  {
+    "supermaven-inc/supermaven-nvim",
+    event = "BufRead",
+    config = function()
+      require("supermaven-nvim").setup {
+        keymaps = {
+          accept_suggestion = "<C-l>",
+          accept_word = "<C-k>",
+          clear_suggestion = "<C-c>",
+        },
+        disable_keymaps = false, -- disables built in keymaps for more manual control
+        log_level = "off",
+      }
+    end,
+  },
   {
     "toppair/peek.nvim",
     event = { "VeryLazy" },
@@ -131,16 +118,16 @@ return {
       vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
     end,
   },
-  {
-    "augmentcode/augment.vim",
-    config = function()
-      vim.g.augment_workspace_folders = env.AUGMENT_FOLDERS
-        or {
-          "~/projects/littlebird/Little-Bird-Client",
-          "~/projects/littlebird/Little-Bird-Backend",
-        }
-    end,
-  },
+  -- {
+  --   "augmentcode/augment.vim",
+  --   config = function()
+  --     vim.g.augment_workspace_folders = env.AUGMENT_FOLDERS
+  --       or {
+  --         "~/projects/littlebird/Little-Bird-Client",
+  --         "~/projects/littlebird/Little-Bird-Backend",
+  --       }
+  --   end,
+  -- },
   {
     "greggh/claude-code.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -150,44 +137,42 @@ return {
       },
       keymaps = {
         toggle = {
-          normal = "<C-,>",
-          terminal = "<C-,>",
+          normal = "<C-.>",
+          terminal = "<C-.>",
           window_navigation = true,
           scrolling = true,
         },
       },
     },
   },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   event = "InsertEnter",
-  --   opts = {
-  --     suggestion = {
-  --       enabled = true,
-  --       auto_trigger = true,
-  --       keymap = {
-  --         accept = "<C-l>",
-  --         next = "<C-j>",
-  --         prev = "<C-k>",
-  --         dismiss = "<C-c>",
-  --       },
-  --     },
-  --     panel = {
-  --       enabled = true,
-  --       auto_refresh = true,
-  --       keymap = {
-  --         jump_prev = "<C-k>",
-  --         jump_next = "<C-j>",
-  --         accept = "<C-l>",
-  --         refresh = "gr",
-  --         open = "<C-\\>",
-  --       },
-  --     },
-  --     filetypes = {
-  --       markdown = true,
-  --       gitcommit = true,
-  --       [".env"] = true,
-  --     },
-  --   },
-  -- },
+  {
+    -- Make sure to set this up properly if you have lazy=true
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      file_types = { "markdown", "codecompanion" },
+    },
+    ft = { "markdown", "codecompanion" },
+  },
+  {
+    "echasnovski/mini.diff",
+    config = function()
+      local diff = require "mini.diff"
+      diff.setup {
+        -- Disabled by default
+        source = diff.gen_source.none(),
+      }
+    end,
+  },
+  {
+    "HakonHarnes/img-clip.nvim",
+    opts = {
+      filetypes = {
+        codecompanion = {
+          prompt_for_file_name = false,
+          template = "[Image]($FILE_PATH)",
+          use_absolute_path = true,
+        },
+      },
+    },
+  },
 }

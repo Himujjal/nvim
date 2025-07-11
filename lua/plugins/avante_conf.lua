@@ -8,14 +8,14 @@ vim.env.BRAVE_API_KEY = env.BRAVE_API_KEY
 
 local GROQ_HOST = "https://api.groq.com/openai/v1/"
 local GROQ_MODEL = "llama-3.3-70b-versatile"
-local GEMINI_MODEL = "gemini-2.0-flash"
+local GEMINI_MODEL = "gemini-2.5-flash-preview-05-20"
 local CEREBRAS_MODEL = "llama-3.3-70b" -- "qwen-3-32b" -- "llama-4-scout-17b-16e-instruct"
 
 ---@class avante.Config
 ---@class avante.CoreConfig: avante.Config
 local opts = {
   --- --------------- model and provider ---------------
-  provider = "groq",
+  provider = "gemini",
   gemini = {
     api_key_name = "GEMINI_KEY",
     model = GEMINI_MODEL,
@@ -47,9 +47,11 @@ local opts = {
   },
 }
 
+---@type LazyPluginState
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
+  enabled = false,
   version = false, -- Never set this value to "*"! Never!
   opts = opts,
 

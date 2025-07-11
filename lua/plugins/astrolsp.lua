@@ -40,6 +40,7 @@ return {
     servers = {
       -- "pyright"
       "gleam",
+      "sourcekit",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
@@ -49,6 +50,16 @@ return {
         on_attach = function(client)
           -- this is important, otherwise tsserver will format ts/js files which we *really* don't want.
           client.server_capabilities.documentFormattingProvider = false
+        end,
+      },
+      sourcekit = {
+        on_attach = function(client) client.server_capabilities.documentFormattingProvider = false end,
+      },
+      marksman = {
+        on_attach = function(client)
+          -- this is important, otherwise tsserver will format ts/js files which we *really* don't want.
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.semanticTokensProvider = false
         end,
       },
     },
@@ -61,6 +72,7 @@ return {
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
       gleam = function(_, opts) require("lspconfig").gleam.setup(opts) end,
+      sourcekit = function(_, opts) require("lspconfig").sourcekit.setup(opts) end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
@@ -104,9 +116,9 @@ return {
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
-    on_attach = function(client, bufnr)
+    on_init = function(client, bufnr)
       -- this would disable semanticTokensProvider for all clients
-      client.server_capabilities.semanticTokensProvider = nil
+      client.server_capabilities.semanticTokensProvider = false
     end,
   },
 }

@@ -14,4 +14,5 @@ return {
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   { import = "astrocommunity.colorscheme.gruvbox-nvim" },
   { import = "astrocommunity.colorscheme.onedarkpro-nvim" },
+  { import = "astrocommunity.colorscheme.rose-pine" },
 }
